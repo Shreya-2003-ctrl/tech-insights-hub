@@ -25,7 +25,7 @@ export function BlogGrid({ posts, onPostClick, searchQuery, activeCategory }: Bl
             : "No articles available at the moment."}
         </p>
       </div>
-    );
+    )
   }
 
   return (
