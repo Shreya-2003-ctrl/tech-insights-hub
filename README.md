@@ -4,7 +4,7 @@ A modern, responsive blog platform built with React featuring category-based fil
 
  Live Demo: https://tech-insights-hub-eight.vercel.app/
 
-🚀 Features
+ Features
 
 Blog listing with card-based layout
 
