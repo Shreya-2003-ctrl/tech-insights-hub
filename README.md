@@ -1,43 +1,143 @@
-# TechPulse — Modern Blog Platform
+ Tech Insights Hub – Blog Website
 
-TechPulse is a modern, responsive blog platform built with React, TypeScript, and Tailwind CSS.  
-It supports article search, category filtering, SEO optimization, and a clean modal-based reading experience.
+A modern, responsive blog platform built with React featuring category-based filtering, search functionality, optimized performance, and SEO best practices.
 
-This project focuses on production-ready frontend practices including structured SEO, reusable components, and accessible UI.
+ Live Demo: https://tech-insights-hub-eight.vercel.app/
 
----
+🚀 Features
 
-## 🚀 Features
+Blog listing with card-based layout
 
-- Modern blog UI with responsive layout
-- Search articles by title, description, or content
-- Filter posts by category
-- Article modal for distraction-free reading
-- SEO optimization using React Helmet
-- Structured data (Website & Article schema)
-- Smooth animations and hover effects
-- Dark mode ready design
-- Accessible components
-- Clean folder structure
+Category-based filtering
 
----
+Search articles by title and description
 
-## 🛠 Tech Stack
+Fully responsive UI (mobile + desktop)
 
-- React + TypeScript
-- Vite
-- Tailwind CSS
-- shadcn/ui
-- React Helmet Async
-- Lucide Icons
+SEO optimized
 
----
+Lighthouse optimized
 
-## 📦 Installation & Setup
+Lazy-loaded images
 
-Make sure Node.js is installed.
+Fast performance via Vercel deployment
 
-Clone the repository:
+ Lighthouse Audit
 
-```bash
-git clone <YOUR_GIT_URL>
+All screenshots are stored inside the /screenshots folder.
+
+Performance
+
+Accessibility
+
+Best Practices
+
+SEO
+
+ SEO Strategy
+ Meta Tags Implemented
+
+The following meta tags were added to improve search engine visibility and social sharing:
+
+title – improves page relevance
+
+description – helps search engines understand page content
+
+viewport – ensures mobile responsiveness
+
+Open Graph tags – improves social media previews
+
+These help improve discoverability, ranking, and click-through rate.
+
+ Semantic HTML Structure
+
+Semantic elements were used throughout the project:
+
+<header> for navigation
+
+<main> for primary content
+
+<article> for blog cards
+
+<section> for grouped content
+
+<footer> for page footer
+
+This improves accessibility and helps search engines understand content hierarchy.
+
+ Image Optimization Approach
+
+Lazy loading enabled for images
+
+Optimized image sizes before upload
+
+Responsive images used
+
+Reduced file sizes
+
+Proper alt attributes added
+
+These steps improved Largest Contentful Paint (LCP) and overall performance.
+
+ Performance Optimizations
+
+Lazy loading images
+
+Component-based architecture
+
+Minified production builds
+
+Reduced unused CSS
+
+Optimized assets
+
+Deployed on Vercel CDN
+
+Result: Lighthouse performance scores consistently around 80–85 across regions.
+
+ Search & Filter Implementation
+Search
+
+Implemented client-side search using React state.
+
+Filters blog posts by matching title and description.
+
+Updates results instantly as the user types.
+
+Category Filter
+
+Categories displayed as selectable buttons.
+
+Clicking a category filters posts accordingly.
+
+Search and category filters work together for refined results.
+
+State management is handled using React hooks.
+
+⚙️ Challenges Faced
+
+Optimizing images while maintaining quality
+
+Improving Lighthouse scores
+
+Implementing combined search and category filtering
+
+Maintaining responsive layouts across devices
+
+Structuring reusable components
+
+These were solved through refactoring, asset optimization, and applying frontend best practices.
+
+🛠️ Technologies Used
+
+React
+
+TypeScript
+
+Tailwind CSS
+
+Lucide Icons
+
+Vercel (Deployment)
+
+Lighthouse (Performance Audits)
