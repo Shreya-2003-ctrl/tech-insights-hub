@@ -114,7 +114,7 @@ Search and category filters work together for refined results.
 
 State management is handled using React hooks.
 
-⚙️ Challenges Faced
+ Challenges Faced
 
 Optimizing images while maintaining quality
 
@@ -128,7 +128,7 @@ Structuring reusable components
 
 These were solved through refactoring, asset optimization, and applying frontend best practices.
 
-🛠️ Technologies Used
+ Technologies Used
 
 React
 
