@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { ApiResponse } from "@/types/blog";
 
-const API_URL = "/public/data/post.json";
+const API_URL = "/data/posts.json";
 
 async function fetchBlogPosts(): Promise<ApiResponse> {
   const response = await fetch(API_URL);
