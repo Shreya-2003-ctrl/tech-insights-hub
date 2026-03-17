@@ -30,9 +30,8 @@ export function BlogCard({ post, onClick }: BlogCardProps) {
   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
   loading="lazy"
   onError={(e) => {
-    e.currentTarget.src =
-      "https://placehold.co/400x250?text=No+Image";
-  }}
+  e.currentTarget.src = "https://placehold.co/400x250?text=No+Image";
+}}
 />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
