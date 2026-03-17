@@ -25,13 +25,13 @@ export function BlogCard({ post, onClick }: BlogCardProps) {
       {/* Image Section */}
       <div className="relative aspect-video overflow-hidden">
         <img
-      src={post.image}
-      alt={`Featured image for article: ${post.title}`}
-      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-      loading="lazy"
-      onError={(e) => {
+  src={post.image}
+  alt={`Featured image for article: ${post.title}`}
+  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+  loading="lazy"
+  onError={(e) => {
     e.currentTarget.src =
-      "https://via.placeholder.com/400x250?text=No+Image";
+      "https://placehold.co/400x250?text=No+Image";
   }}
 />
         {/* Dark overlay */}
