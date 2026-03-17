@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { ApiResponse } from "@/types/blog";
 
-const API_URL = "https://api.slingacademy.com/v1/sample-data/blog-posts?offset=0&limit=10";
+const API_URL = "/public/data/post.json";
 
 async function fetchBlogPosts(): Promise<ApiResponse> {
   const response = await fetch(API_URL);
