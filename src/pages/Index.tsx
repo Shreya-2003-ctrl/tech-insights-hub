@@ -16,28 +16,35 @@ import { WebsiteSchema, ArticleSchema } from "@/components/StructuredData";
 
 const Index = () => {
   const { data, isLoading, isError, refetch } = useBlogPosts();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   const posts = data?.blogs ?? [];
 
-  // Extract unique categories
+  // ✅ Unique categories (safe)
   const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(posts.map((post) => post.category))];
-    return uniqueCategories.sort();
+    return [...new Set(posts.map((post) => post.category))].sort();
   }, [posts]);
 
-  // Filter posts by search and category
+  // ✅ Filter logic (safe for undefined fields)
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
+      const title = post.title?.toLowerCase() || "";
+      const description = post.description?.toLowerCase() || "";
+      const content = post.content_text?.toLowerCase() || "";
+
+      const query = searchQuery.toLowerCase();
+
       const matchesSearch =
         !searchQuery ||
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.content_text.toLowerCase().includes(searchQuery.toLowerCase());
+        title.includes(query) ||
+        description.includes(query) ||
+        content.includes(query);
 
-      const matchesCategory = !activeCategory || post.category === activeCategory;
+      const matchesCategory =
+        !activeCategory || post.category === activeCategory;
 
       return matchesSearch && matchesCategory;
     });
@@ -47,6 +54,7 @@ const Index = () => {
     <HelmetProvider>
       <SEO />
       <WebsiteSchema name="TechPulse" url="https://techpulse.dev" />
+
       {selectedPost && (
         <ArticleSchema post={selectedPost} url="https://techpulse.dev" />
       )}
@@ -56,11 +64,9 @@ const Index = () => {
         <Hero />
 
         <main id="articles" className="flex-1 container py-12">
-          {/* Search and Filter Section */}
-          <section aria-labelledby="filter-heading" className="mb-8">
-            <h2 id="filter-heading" className="sr-only">
-              Filter articles
-            </h2>
+          
+          {/* 🔍 Search + Filter */}
+          <section className="mb-8">
             <div className="flex flex-col lg:flex-row lg:items-center gap-6 justify-between">
               <SearchBar
                 value={searchQuery}
@@ -68,6 +74,7 @@ const Index = () => {
                 resultsCount={filteredPosts.length}
                 totalCount={posts.length}
               />
+
               <CategoryFilter
                 categories={categories}
                 activeCategory={activeCategory}
@@ -76,20 +83,17 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Results Count */}
+          {/* 📊 Results Info */}
           {(searchQuery || activeCategory) && !isLoading && !isError && (
-            <p className="text-sm text-muted-foreground mb-6" role="status" aria-live="polite">
+            <p className="text-sm text-muted-foreground mb-6">
               Showing {filteredPosts.length} of {posts.length} articles
               {searchQuery && ` matching "${searchQuery}"`}
               {activeCategory && ` in "${activeCategory}"`}
             </p>
           )}
 
-          {/* Content Section */}
-          <section aria-labelledby="articles-heading">
-            <h2 id="articles-heading" className="sr-only">
-              Blog articles
-            </h2>
+          {/* 📰 Blog Content */}
+          <section>
             {isLoading ? (
               <LoadingState />
             ) : isError ? (
@@ -107,12 +111,14 @@ const Index = () => {
 
         <Footer />
 
-        {/* Article Modal */}
-        <ArticleModal post={selectedPost} onClose={() => setSelectedPost(null)} />
+        {/* 📖 Article Modal */}
+        <ArticleModal
+          post={selectedPost}
+          onClose={() => setSelectedPost(null)}
+        />
       </div>
     </HelmetProvider>
   );
 };
 
-export default Index;  
-
+export default Index;

@@ -6,10 +6,16 @@ interface CategoryFilterProps {
   onCategoryChange: (category: string | null) => void;
 }
 
-export function CategoryFilter({ categories, activeCategory, onCategoryChange }: CategoryFilterProps) {
+export function CategoryFilter({
+  categories,
+  activeCategory,
+  onCategoryChange,
+}: CategoryFilterProps) {
   return (
     <nav aria-label="Category filter" className="flex flex-wrap gap-2">
+      {/* ALL BUTTON */}
       <button
+        key="all"
         onClick={() => onCategoryChange(null)}
         className={cn(
           "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
@@ -21,9 +27,11 @@ export function CategoryFilter({ categories, activeCategory, onCategoryChange }:
       >
         All
       </button>
-      {categories.map((category) => (
+
+      {/* CATEGORY BUTTONS */}
+      {[...new Set(categories)].map((category, index) => (
         <button
-          key={category}
+          key={`${category}-${index}`} // ✅ guaranteed unique
           onClick={() => onCategoryChange(category)}
           className={cn(
             "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 capitalize",
